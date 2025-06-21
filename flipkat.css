@@ -1,0 +1,145 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+
+header{
+    background-color: #007bff;
+    color: white;
+    padding: 40px 20px;
+    margin: 40px;
+    text-align: center;
+}
+header h1{
+    font-size: 40px;
+}
+header p{
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.about{
+    padding-left:40px;
+}
+h2{
+    font-size:30px;
+    color: #007bff;
+}
+p{
+    font-size:20px;
+    font-weight: 700;
+}
+.logo{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+}
+.image1{
+    background-image: url('what-does-a-coder-do-2022-career-guide.webp');
+    width: 50%;
+    height: 300px;
+    background-size: contain;
+    margin-top:80px;
+    background-repeat: no-repeat;
+}
+.image2{
+    background-image: url('pngtree-coder-clipart-boy-working-with-computer-game-on-the-desk-vector-png-image_6804917.png');
+    background-size: contain;
+    background-repeat:no-repeat;
+    width: 50%;
+    height: 300px;
+    margin-top: 100px;
+}
+.projects{
+    padding-left: 40px;
+}
+.project{
+    background-color: antiquewhite;
+    border-left: 3px solid #007bff;
+    margin: 10px;
+    padding-left: 15px;
+}
+h3{
+    font-size: 30px;
+}
+.project p{
+    font-size: 20px;
+    font-weight: 400;
+}
+.contact{
+    padding-left: 40px;
+}
+.contact p{
+    color: #555;
+    font-size: 18px;
+    font-weight: 200;
+}
+@media screen and (max-width:600px){
+    .about p{
+        font-size: 4vw;
+        font-weight: 200;
+    }
+   .projects{
+    padding-right:20%px;
+   }
+
+   .project p{
+    font-size: 4vw;
+   }
+}
+@media screen and (max-width:480px){
+    header{
+        margin:0;
+    }
+    .about{
+        padding-left:20px;
+    }
+    .about p{
+        font-size:4vw ;
+        font-weight: 200;
+    }
+    .logo{
+        flex-direction: column;
+        padding-right: 10px;
+        margin: 0;
+    }
+    .image1,
+    .image2 {
+        width: 90%;
+        height: 500px;
+        margin-top: 30px;
+    }
+    .image1{
+        height:200px ;
+    }
+    .image2{
+        height: 300px;
+        margin-left: 50px;
+    }
+    .projects{
+        padding: 0;
+    }
+    .projects h2{
+        padding-left: 15px;
+    }
+    .project p{
+        font-size: 4vw;
+        font-weight: 200;
+    }
+    .contact{
+        padding: 0;
+        padding-left: 10px;
+    }
+    .contact h3{
+        font-size: 4vw;
+    }
+    .contact p{
+        font-size: 3vw;
+    }
+    .project h3{
+        font-size: 5vw;
+        font-weight: 600;
+    }
+}
