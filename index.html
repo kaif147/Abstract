@@ -1,13 +1,162 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <style>
+    .error { color: red; font-size: 14px; }
+    .success { color: green; font-size: 14px; }
+     
+    body{
+background-color: black;
+
+}
+.container{
+    margin: 50px auto;
+    padding: 10px;
+    width: 300px;
+    background-color: #292828;
+    color: white;
+    position: relative;
+    border-radius: 10px;
+    
+}
+h2{
+    padding-bottom: 10px;
+    text-align: center;
+    text-decoration: underline red;
+}
+input{
+  color: white;
+}
+input::placeholder{
+  color: #aaa;
+}
+.container::after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-image:conic-gradient(red,blue,green,red) ;
+    left: 50px;
+    translate: -50% -50%;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    padding: 4px;
+    border-radius: 10px; 
+}
+button
+{
+    width: 150px;
+    background-color: blue;
+    color: white;
+}
+
+  </style>
 </head>
 <body>
-    <script src="first.js">
-        
-    </script>
+  <div class="container">
+    <form id="form">
+      <h2>Login form</h2>
+
+      <label>User:</label>
+      <input type="text" name="user" placeholder="Enter your userName"/><br><br/>
+
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Enter your Email"/><br>
+      <p id="emailmsg"></p>
+
+      <label>Password:</label>
+      <input type="password" name="password" placeholder="Enter your password"><br>
+      <p id="passmsg"></p>
+
+      <label>Gender:</label>
+      <input type="radio"  name="gender"  value="Male"/>Male
+      <input type="radio"  name="gender"  value="Female"/>Female  <br><br/>
+
+      <label>
+        <input type="checkbox" name="term">I agree with this term and condition
+      </label>
+      <br><br/>
+
+      <p id="error"></p>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("form");
+    const emailInput = document.querySelector("input[name='email']");
+    const passwordInput = document.querySelector("input[name='password']");
+    const emailmsg = document.getElementById("emailmsg");
+    const passmsg = document.getElementById("passmsg");
+    const error = document.getElementById("error");
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.(com)$/;
+    let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/;
+
+    // 🔹 Real-time Email validation
+    emailInput.addEventListener("input", function(){
+      if(!emailPattern.test(emailInput.value.trim())){
+        emailmsg.innerText = "❌ Invalid email (must end with .com)";
+        emailmsg.className = "error";
+      } else {
+        emailmsg.innerText = "✅ Valid email!";
+        emailmsg.className = "success";
+      }
+    });
+
+    // 🔹 Real-time Password validation
+    passwordInput.addEventListener("input", function(){
+      if(!passwordPattern.test(passwordInput.value.trim())){
+        passmsg.innerText = "❌ Must be 8+ chars, 1 uppercase, 1 number, 1 symbol";
+        passmsg.className = "error";
+      } else {
+        passmsg.innerText = "✅ Strong password!";
+        passmsg.className = "success";
+      }
+    });
+
+    // 🔹 Submit validation
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const user = document.querySelector("input[name='user']").value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+      const gender = document.querySelector("input[name='gender']:checked");
+      const term = document.querySelector("input[name='term']").checked;
+
+      if(user==="" || email==="" || password==="" || !gender || !term){
+        error.innerText = "❌ All fields are required!";
+        error.className = "error";
+        return;
+      }
+
+      if(!emailPattern.test(email)){
+        error.innerText = "❌ Enter a valid email address!";
+        error.className = "error";
+        return;
+      }
+
+      if(!passwordPattern.test(password)){
+        error.innerText = "❌ Password is not strong enough!";
+        error.className = "error";
+        return;
+      }
+
+      error.innerText = "✅ Form submitted successfully!";
+      error.className = "success";
+
+      console.log("user:", user);
+      console.log("email:", email);
+      console.log("password:", password);
+      console.log("gender:", gender.value);
+      console.log("term:", term);
+    });
+  </script>
 </body>
-</html>
+</html> 
